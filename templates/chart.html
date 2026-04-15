@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart — EnviroAir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['class', 'percentage'],
+          ['Good', 15],
+          ['Moderate', 35],
+          ['Poor', 35],
+          ['Satisfactory', 15],
+          ['Severe', 35],
+          ['Very Poor', 35]
+        ]);
+        var options = { title: 'Distribution (demo)', is3D: true, backgroundColor: 'transparent', legend: { position: 'bottom', textStyle: { color: '#94a3b8' } }, titleTextStyle: { color: '#f1f5f9' } };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+    <style> body { font-family: 'DM Sans', system-ui, sans-serif; } </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+    {% include 'nav.html' %}
+    <div class="relative h-40 overflow-hidden border-b border-slate-800">
+        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1920&q=80" alt="" class="w-full h-full object-cover opacity-40">
+        <div class="absolute inset-0 flex items-end p-6 bg-gradient-to-t from-slate-950">
+            <h1 class="text-2xl font-bold text-white">Air quality chart</h1>
+        </div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 py-10">
+        <p class="text-slate-400 text-sm mb-6 text-center">3D pie chart (Google Charts) — demo category split.</p>
+        <div id="piechart_3d" class="w-full min-h-[420px]"></div>
+    </div>
+</body>
+</html>

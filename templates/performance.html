@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance — EnviroAir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'DM Sans', system-ui, sans-serif; } </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+    {% include 'nav.html' %}
+    <div class="relative h-48 sm:h-56 overflow-hidden border-b border-slate-800">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80" alt="" class="w-full h-full object-cover opacity-50">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div>
+        <div class="absolute bottom-6 left-4 right-4 max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold text-white">Model performance</h1>
+            <p class="text-slate-300 text-sm mt-1">Reported metrics (demo values)</p>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <section class="text-center mb-14">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-6">
+                    <i class="fas fa-chart-line text-3xl text-teal-400 mb-3"></i>
+                    <h2 class="font-semibold text-slate-300 text-sm">Accuracy</h2>
+                    <p class="text-2xl font-bold text-white">95%</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-6">
+                    <i class="fas fa-balance-scale text-3xl text-teal-400 mb-3"></i>
+                    <h2 class="font-semibold text-slate-300 text-sm">Precision</h2>
+                    <p class="text-2xl font-bold text-white">92%</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-6">
+                    <i class="fas fa-bullseye text-3xl text-teal-400 mb-3"></i>
+                    <h2 class="font-semibold text-slate-300 text-sm">Recall</h2>
+                    <p class="text-2xl font-bold text-white">90%</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-6">
+                    <i class="fas fa-ruler-combined text-3xl text-teal-400 mb-3"></i>
+                    <h2 class="font-semibold text-slate-300 text-sm">F1</h2>
+                    <p class="text-2xl font-bold text-white">91%</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="text-xl font-bold text-center text-white mb-6">Per-class analysis</h2>
+        <div class="overflow-x-auto rounded-2xl border border-slate-700 mb-14">
+            <table class="w-full text-sm text-center">
+                <thead>
+                    <tr class="bg-slate-800 text-slate-200">
+                        <th class="px-4 py-3 font-semibold">Category</th>
+                        <th class="px-4 py-3 font-semibold">Recall</th>
+                        <th class="px-4 py-3 font-semibold">F1</th>
+                        <th class="px-4 py-3 font-semibold">Precision</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    <tr class="bg-emerald-950/40"><td class="px-4 py-3 font-medium text-emerald-300">Good</td><td>0.96</td><td>0.95</td><td>0.93</td></tr>
+                    <tr class="bg-lime-950/30"><td class="px-4 py-3 font-medium text-lime-300">Moderate</td><td>0.79</td><td>0.82</td><td>0.85</td></tr>
+                    <tr class="bg-yellow-950/30"><td class="px-4 py-3 font-medium text-yellow-200">Poor</td><td>0.90</td><td>0.89</td><td>0.88</td></tr>
+                    <tr class="bg-amber-950/30"><td class="px-4 py-3 font-medium text-amber-200">Satisfactory</td><td>0.87</td><td>0.86</td><td>0.85</td></tr>
+                    <tr class="bg-orange-950/40"><td class="px-4 py-3 font-medium text-orange-300">Severe</td><td>0.97</td><td>0.97</td><td>0.97</td></tr>
+                    <tr class="bg-red-950/40"><td class="px-4 py-3 font-medium text-red-300">Very Poor</td><td>0.93</td><td>0.93</td><td>0.93</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="text-xl font-bold text-center text-white mb-4">Confusion matrix</h2>
+        <p class="text-center text-slate-500 text-sm mb-6">Placeholder visualization — replace with your exported plot.</p>
+        <div class="max-w-2xl mx-auto rounded-2xl overflow-hidden border border-slate-700">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Matrix placeholder" class="w-full h-48 object-cover opacity-80">
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Flask
+flask-mysqldb
+pandas==2.2.3
+numpy==1.26.4
+scipy==1.11.4
+scikit-learn==1.2.2
+PyMySQL

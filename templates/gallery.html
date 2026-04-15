@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery — EnviroAir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'DM Sans', system-ui, sans-serif; } </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+    {% include 'nav.html' %}
+    <div class="max-w-5xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold text-white mb-2">Gallery</h1>
+        <p class="text-slate-400 text-sm mb-8">Images from Unsplash and Pixabay (open licenses).</p>
+        <div class="relative rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+            <div id="carousel" class="flex w-[600%] transition-transform duration-500 ease-out" style="transform: translateX(0);">
+                <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1600&q=80" alt="City" class="w-1/6 h-[50vh] sm:h-[60vh] object-cover shrink-0">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=80" alt="Lab" class="w-1/6 h-[50vh] sm:h-[60vh] object-cover shrink-0">
+                <img src="https://images.unsplash.com/photo-1497435334941-0c4d0eab0b0d?auto=format&fit=crop&w=1600&q=80" alt="Wind" class="w-1/6 h-[50vh] sm:h-[60vh] object-cover shrink-0">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80" alt="Forest" class="w-1/6 h-[50vh] sm:h-[60vh] object-cover shrink-0">
+                <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1600&q=80" alt="Urban" class="w-1/6 h-[50vh] sm:h-[60vh] object-cover shrink-0">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/13/48/clouds-1868695_1280.jpg" alt="Clouds Pixabay" class="w-1/6 h-[50vh] sm:h-[60vh] object-cover shrink-0">
+            </div>
+            <button type="button" id="prev" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-11 h-11 rounded-full text-xl leading-none">‹</button>
+            <button type="button" id="next" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-11 h-11 rounded-full text-xl leading-none">›</button>
+        </div>
+        <div class="flex justify-center gap-2 mt-4" id="dots"></div>
+    </div>
+    <script>
+        (function () {
+            var track = document.getElementById('carousel');
+            var slides = track.children.length;
+            var i = 0;
+            function go(n) {
+                i = (n + slides) % slides;
+                track.style.transform = 'translateX(-' + (i * (100 / slides)) + '%)';
+                var dots = document.querySelectorAll('#dots button');
+                for (var d = 0; d < dots.length; d++) {
+                    dots[d].className = d === i ? 'w-2.5 h-2.5 rounded-full bg-teal-500' : 'w-2.5 h-2.5 rounded-full bg-slate-600';
+                }
+            }
+            document.getElementById('prev').onclick = function () { go(i - 1); };
+            document.getElementById('next').onclick = function () { go(i + 1); };
+            var dotWrap = document.getElementById('dots');
+            for (var j = 0; j < slides; j++) {
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = j === 0 ? 'w-2.5 h-2.5 rounded-full bg-teal-500' : 'w-2.5 h-2.5 rounded-full bg-slate-600';
+                b.onclick = (function (idx) { return function () { go(idx); }; })(j);
+                dotWrap.appendChild(b);
+            }
+            setInterval(function () { go(i + 1); }, 5000);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnviroAir — Air Quality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['DM Sans', 'system-ui', 'sans-serif'] },
+            colors: { brand: { 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 900: '#134e4a' } }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+    {% include 'nav.html' %}
+
+    <header class="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1920&q=80" alt="City skyline air quality" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950"></div>
+        </div>
+        <div class="relative z-10 max-w-3xl py-20">
+            <p class="text-brand-400 font-semibold tracking-wide uppercase text-sm mb-3">EnviroAir Initiative</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Air Quality Prediction</h1>
+            <p class="text-lg text-slate-300 mb-8 max-w-xl mx-auto">Predict and monitor air quality using machine learning—healthier decisions for cities and communities.</p>
+            <a href="#features" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-3 rounded-xl shadow-lg shadow-teal-900/40 transition">Explore features</a>
+        </div>
+    </header>
+
+    <section id="features" class="py-20 px-4 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-4">Features</h2>
+            <p class="text-slate-400 text-center max-w-2xl mx-auto mb-14">Tools to understand pollution patterns and forecast conditions from sensor-style inputs.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-700/80 shadow-xl hover:border-brand-500/40 transition group">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Monitoring" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-brand-400 mb-2">Real-time signals</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Enter pollutant readings and get instant model-based classification.</p>
+                    </div>
+                </article>
+                <article class="bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-700/80 shadow-xl hover:border-brand-500/40 transition group">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Nature and data" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-brand-400 mb-2">Historical context</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Upload CSV datasets to preview trends before running predictions.</p>
+                    </div>
+                </article>
+                <article class="bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-700/80 shadow-xl hover:border-brand-500/40 transition group">
+                    <img src="https://images.unsplash.com/photo-1497435334941-0c4d0eab0b0d?auto=format&fit=crop&w=800&q=80" alt="Clear sky" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-brand-400 mb-2">ML predictions</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Powered by a trained classifier—see performance and charts after login.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">About the project</h2>
+                    <p class="text-slate-400 leading-relaxed">This application combines a Flask web interface with a scikit-learn model to estimate air quality categories from inputs such as PM2.5, PM10, NO₂, CO, SO₂, and O₃. It is designed for coursework and demos—upload data, explore metrics, and visualize distributions.</p>
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=900&q=80" alt="Urban environment" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-4 bg-slate-900/50 border-t border-slate-800">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Contact</h2>
+            <p class="text-slate-400 mb-8">Questions about the project? Leave a message (demo form).</p>
+            <form action="#" class="space-y-4 text-left">
+                <div>
+                    <label for="name" class="block text-sm text-slate-400 mb-1">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full rounded-lg bg-slate-800 border border-slate-600 px-4 py-2 text-white focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm text-slate-400 mb-1">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full rounded-lg bg-slate-800 border border-slate-600 px-4 py-2 text-white focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm text-slate-400 mb-1">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full rounded-lg bg-slate-800 border border-slate-600 px-4 py-2 text-white focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none resize"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-semibold py-3 rounded-xl transition">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-slate-500 text-sm border-t border-slate-800">
+        <p>&copy; 2024 EnviroAir — Air Quality Prediction</p>
+    </footer>
+</body>
+</html>

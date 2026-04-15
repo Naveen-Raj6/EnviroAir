@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview — EnviroAir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'DM Sans', system-ui, sans-serif; } </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+    {% include 'nav.html' %}
+    <div class="max-w-6xl mx-auto px-4 py-10">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-white">Data preview</h1>
+                <p class="text-slate-400 text-sm mt-1">Uploaded CSV rendered as a table.</p>
+            </div>
+            <a href="{{ url_for('prediction') }}" class="inline-flex justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm">Go to prediction</a>
+        </div>
+
+        {% if data is not none %}
+        <div class="rounded-2xl border border-slate-700 overflow-x-auto bg-slate-900/50 p-4 [&_table]:w-full [&_table]:text-sm [&_th]:bg-slate-800 [&_th]:text-slate-200 [&_th]:px-3 [&_th]:py-2 [&_th]:border [&_th]:border-slate-600 [&_td]:px-3 [&_td]:py-2 [&_td]:border [&_td]:border-slate-700 [&_tr:nth-child(even)]:bg-slate-800/40">
+            {{ data.to_html(classes='min-w-full border-collapse', na_rep='-', index=False) | safe }}
+        </div>
+        {% else %}
+        <div class="rounded-2xl border border-dashed border-slate-600 p-12 text-center">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="" class="w-full max-w-md mx-auto rounded-xl opacity-60 mb-6 h-40 object-cover">
+            <p class="text-slate-400">No data loaded. Upload a CSV from the <a href="{{ url_for('upload') }}" class="text-teal-400 hover:underline">Upload</a> page.</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <button type="button" id="backToBottomBtn" title="Scroll to bottom" class="hidden fixed bottom-6 right-6 z-40 rounded-full bg-slate-800 border border-slate-600 text-teal-400 w-12 h-12 text-xl shadow-lg hover:bg-slate-700">↓</button>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
